@@ -6,6 +6,14 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+from django.contrib.auth.models import User
+
+
+# class UserProfileInfo(models.Model):
+#     user=models.OneToOneField(User,on_delete=models.CASCADE)
+#     class Meta:
+#             managed = False
+#             db_table = 'Login'
 
 
 class Admin(models.Model):
@@ -75,9 +83,11 @@ class Paytype(models.Model):
 
 class Room(models.Model):
     roomid = models.AutoField(db_column='RoomID', primary_key=True)  # Field name made lowercase.
-    roomtype = models.ForeignKey('Roomtype', models.DO_NOTHING, db_column='RoomType', verbose_name='Room Type')  # Field name made lowercase.
+    roomtype = models.ForeignKey('Roomtype', models.DO_NOTHING, db_column='RoomType', verbose_name='Room Type',default="Single")  # Field name made lowercase.
     is_reserved = models.NullBooleanField(db_column='IS_Reserved')  # Field name made lowercase.
 
+    def __str__(self):
+        return self.roomtype
     class Meta:
         managed = True
         db_table = 'ROOM'
@@ -122,9 +132,21 @@ class Roomratings(models.Model):
 
 class Roomtype(models.Model):
     roomtypeid = models.AutoField(db_column='RoomTypeID', primary_key=True)  # Field name made lowercase.
-    roomtype = models.CharField(db_column='RoomType', max_length=20, blank=True, null=True,verbose_name='Type')  # Field name made lowercase.
+    roomtype = models.CharField(db_column='RoomType', max_length=20, blank=True, null=True,verbose_name='Type',default='Single')  # Field name made lowercase.
     def __str__(self):
         return self.roomtype
     class Meta:
         managed = True
         db_table = 'RoomType'
+
+# class SignUpUser(models.Model):
+#     user_id=models.AutoField(db_column='UserId',primary_key=True)
+#     first_name = models.CharField(db_column='FirstName',max_length=30, blank=True,null=True)
+#     last_name = models.CharField(db_column='LastName',max_length=30,  blank=True,null=True)
+#     email = models.EmailField(db_column='Email',max_length=254 )
+#     username = models.CharField(db_column='UserName',max_length=20)
+#
+#
+#     class Meta:
+#         managed = True
+#         db_table = 'signup'

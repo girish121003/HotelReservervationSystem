@@ -14,8 +14,9 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
+TEMPLATE_DIR=os.path.join(BASE_DIR,'templates')
+STATIC_DIR=os.path.join(BASE_DIR,"static")
+MEDIA_DIR=os.path.join(BASE_DIR,"media")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -24,7 +25,6 @@ SECRET_KEY = 'yvna4i#+_c-&6*z72)*(grj)q8%^nx2o81a!2o75#1g1l35ma$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
 ]
 
 MIDDLEWARE = [
@@ -55,7 +57,7 @@ ROOT_URLCONF = 'HotelReserve.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR,],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,7 +77,8 @@ WSGI_APPLICATION = 'HotelReserve.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-'default': {
+'default':
+{
 'NAME': 'HOTERRESERVEDDB',
 'ENGINE': 'sql_server.pyodbc',
 'HOST': 'DESKTOP-IPTMTQF',
@@ -93,13 +96,22 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+]
 
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_'
+                'validation.MinimumLengthValidator',
+        'OPTIONS':{'min_length':9}
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -127,8 +139,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL="RoomType"
-LOGOUT_REDIRECT_URL="signup"
-LOGIN_URL="hotel_login"
+STATIC_URL = '/static/'
+STATICFILES_DIRS=[
+    STATIC_DIR,
+]
+MEDIA_ROOT=MEDIA_DIR
+MEDIA_URL='/media/'
+
+SITE_ID=1
+
+LOGIN_REDIRECT_URL='/'

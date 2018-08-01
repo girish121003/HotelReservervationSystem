@@ -1,0 +1,10 @@
+{% extends "Reserve/master.html"%}
+    {% block body_block %}
+        <div class="jumbotron">
+        <h>Room Types</h>
+        {%  for x in rooms %}
+            <div>  <a href="#" class="btn btn-ghost">{{ x.roomtype }}</a></div>
+
+        {%  endfor %}
+    </div>
+{% endblock %}

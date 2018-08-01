@@ -27,7 +27,7 @@
                         <li><a href="#cities">subject</a></li>
                         <li><a href="#plans">class</a></li>
                         {% if user.is_authenticated %}
-                        <li> <a href="{%url 'Logout'%}">logout</a></li>
+                        <li> <a href="{%url 'Logout'%}">Hello! {{ user.username }}</a></li>
                         {% else %}
                         <li><a href="{%url 'login'%}">login</a></li>
                         {% endif %}

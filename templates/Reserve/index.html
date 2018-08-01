@@ -3,6 +3,10 @@
     {% block body_block %}
     <h1><p class="main">Bed & Breakfast</p></h1>
     <p class="sub typed">PLACE WHERE YOU FIND SERENITY</p><br>
+        {% if user.is_authenticated %}
+        <a href="{% url 'search' %}" class="btn btn-ghost">Search Rooms</a>
+        {% else %}
     <a href="{% url 'login'%}" class="btn btn-full">LOGIN</a>
     <a href="{%url 'signup'%}" class="btn btn-ghost">SIGN UP</a>
+        {% endif %}
 {% endblock %}
