@@ -219,6 +219,11 @@
               <item name="HotelReserve" type="462c0819:PsiDirectoryNode" />
               <item name="HotelReserve" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="HotelReserve" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HotelReserve" type="462c0819:PsiDirectoryNode" />
+              <item name="Reserve" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
