@@ -1,0 +1,14 @@
+{% extends 'Reserve/master.html'%}
+{% block body_block %}
+    <div class="jumbotron">
+        <h1> Please Login</h1>
+        <form action="{%url 'user_login'%}" method="POST">
+             {% csrf_token %}
+            <label for="txtUsername">Username: </label>
+            <input type="text" id="txtUsername">
+            <label for ="txtPassword">Password: </label>
+            <input type="password" id="txtPassword">
+            <input type="submit" value="Login">
+        </form>
+    </div>
+{% endblock %}

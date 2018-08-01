@@ -1,0 +1,8 @@
+<!doctype html>
+{% extends "Reserve/master.html"%}
+    {% block body_block %}
+    <h1><p class="main">Bed & Breakfast</p></h1>
+    <p class="sub typed">PLACE WHERE YOU FIND SERENITY</p><br>
+    <a href="{% url 'login'%}" class="btn btn-full">LOGIN</a>
+    <a href="{%url 'signup'%}" class="btn btn-ghost">SIGN UP</a>
+{% endblock %}

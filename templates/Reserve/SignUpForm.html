@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% extends "Reserve/master.html" %}
+{% block body_block %}
+        <form method="post">
+              {% csrf_token%}
+            {% if form.errors%}
+                <p> there is an error in the form</p>
+            {% endif %}
+
+            <div class="container">
+                <div class="jumbotron">
+                    <table >
+            <tr>
+                <td>
+                    <label>Username</label></td>
+                <td>{{form.username}}{{form.username.errors}}</td></tr>
+
+            <tr>
+                <td>
+                    <label>Password</label></td>
+                <td>{{form.password1}}{{form.password1.errors}}</td></tr>
+
+
+            <tr>
+                <td>
+                    <label>Confirm Password</label></td>
+                <td>{{form.password2}}{{form.password2.errors}}</td></tr>
+
+           <tr>
+                <td>
+                    <label>Email</label></td>
+                <td>{{form.email}}{{form.email.errors}}</td></tr>
+
+
+        </table>
+
+            <!--<a id="idSubmit"  class="btn btn-ghost">Submit</a>-->
+            <input type="submit" class="btn btn-ghost" value="Submit">
+            <a id="idCLear" href="{%url 'index'%}" class="btn btn-ghost">Cancel</a>
+                     </div>
+            </div>
+        </form>
+{% endblock %}

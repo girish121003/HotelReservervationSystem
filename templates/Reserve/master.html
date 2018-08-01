@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Bed & Breakfast</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400,400i" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/superslides.css'%}">
+        <link rel="stylesheet" href="{% static 'css/masterPage.css'%}">
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400,400i|Varela+Round" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Lato:100,300,300i,400,400i|Varela+Round" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    </head>
+        <body>
+
+        <header>
+            <div class="row">
+            <div class="nav">
+
+                <a href="{% url 'index'%}"><img src="{% static 'img/icon/BB.logo.png'%}" class="logo"></a>
+
+                    <ul class="main-nav js--main-nav">
+                        <li><a href="{% url 'index'%}">home</a></li>
+                        <li><a href="#works">about</a></li>
+                        <li><a href="#cities">subject</a></li>
+                        <li><a href="#plans">class</a></li>
+                        {% if user.is_authenticated %}
+                        <li> <a href="{%url 'Logout'%}">logout</a></li>
+                        {% else %}
+                        <li><a href="{%url 'login'%}">login</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+
+            <div id="slides">
+                <div class="overlay"></div>
+
+                    <div class="slides-container">
+
+                      <img src="{% static 'img/img1.jpeg'%}"/>
+                      <img src="{% static 'img/img2.jpeg'%}"/>
+                      <img src="{% static 'img/img3.jpeg'%}"/>
+                      <img src="{% static 'img/img4.jpeg'%}"/>
+                      <img src="{% static 'img/img5.jpeg'%}"/>
+                    </div>
+
+                      <div class="TitleMessage">
+                        <div class="heading">
+                            {% block body_block%}
+                            {% endblock %}
+                        <!--<h1><p class="main">Bed & Breakfast</p></h1>-->
+                        <!--<p class="sub typed">Place where you find serenity</p><br>-->
+                            <!--<a href="#" class="btn btn-full">LOGIN</a>-->
+                            <!--<a href="{%url 'signup'%}" class="btn btn-ghost">SIGN UP</a>-->
+
+                        </div>
+
+                    </div>
+
+                    <nav class="slides-navigation">
+                        <a href="#" class="next"></a>
+                        <a href="#" class="prev"></a>
+                    </nav>
+
+
+
+            </div>
+
+        </header>
+
+        </body>
+   <script src="{% static 'js/vendor/jquery.superslides.min.js'%}"></script>
+<script src="{% static 'js/main.js'%}"></script>
+</html>
